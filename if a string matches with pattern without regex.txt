@@ -1,0 +1,50 @@
+
+Does a given file name match a single-star pattern? (can't use regex I assume) 
+index.html matches *.html 
+foo.txt does not match *.html 
+
+matches(“index.html”, “*html”) returns true 
+matches(“foo.txt”, “*html”) returns false 
+matches(“cat”, “c*t”) returns true
+
+
+
+
+
+
+public class Interview_Practice 
+{
+public static boolean matches(String name, String pattern)
+{
+if(name.length() < pattern.length()-1)
+{
+return false;
+}
+int match=0;
+int indexfront = pattern.indexOf("*");
+String substringfront = pattern.substring(0,indexfront);
+if(substringfront.equals(name.substring(0,indexfront)))
+{
+match++;
+}
+
+String substringend = pattern.substring(indexfront+1,pattern.length());
+if(substringend.equals(name.substring(name.length()-substringend.length(),name.length())))
+{
+match++;
+}
+
+if(match==2)
+{
+return true;
+}
+else
+return false;
+
+}
+public static void main(String[] args){
+    String name="cat"; //"index.html with *.html; foo.txt with *.html"
+    String pattern = "c*t";
+    System.out.println(matches(name,pattern));
+}
+}

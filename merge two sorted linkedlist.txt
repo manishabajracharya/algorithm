@@ -1,0 +1,32 @@
+public Node mergelist(Node L1, Node L2)
+{
+Node head = new Node(0);
+Node merged = head;
+
+while(L1!=null && L2!=null)
+{
+if(L1.data<=L2.data)
+{
+merged.next = L1;
+L1 = L1.next;
+}
+else
+{
+merged.next = L2;
+L2 = L2.next;
+}
+
+merged = merged.next;
+
+}
+
+if(L1!=null)
+{
+merged.next = L1;
+}
+if(L2!= null)
+{
+merged.next = L2;
+}
+return head.next;
+}

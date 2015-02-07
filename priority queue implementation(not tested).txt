@@ -1,0 +1,75 @@
+
+heap data structure to implement Priority Queue
+
+
+public static void Build_Heap(int[] arr)
+{
+for(int i=arr.length/2;i>= 0;i--)
+{
+Max_Heapify(arr, i);
+}
+
+}
+
+
+public static void Max_Heapify(int[] arr, i)
+{
+int left = i*2+1;
+int right = i*2+2;
+int largest = i;
+if(arr[left]>arr[i])
+{
+largest = left;
+}
+if(arr[right]>arr[i])
+{
+largest = right;
+}
+if(largest!=i)
+{
+int temp = arr[i];
+arr[i]=arr[largest];
+arr[largest] = temp;
+Max_Heapify(arr, largest);
+}
+}
+
+
+public static int Extract_Max(int[] arr)
+{
+int len = arr.length;
+if(len<1)
+{
+System.out.println("heap doe snot exist");
+return -1;
+}
+else
+{
+max = arr[0];
+arr[0] = arr[len-1];
+len = len--;  // decrease the size of array: int size = len-1;int newarr = new int[size]; newarr = Arrays.copyOf(arr, size);Max_Heapify(newarr,0);
+Max_Heapify(newarr, 0);
+return max;
+}
+}
+
+public static void Increase_Key(int[] arr, i, key)
+{
+int parent = i/2;
+arr[i] = key;
+while(arr[parent]<arr[i]& i>0)
+{
+int temp = arr[i];
+arr[i] = arr[parent];
+arr[parent] = temp;
+}
+
+}
+
+public static void Insert(int[] arr, int key)
+{
+int newarr=new int[arr.length+1];
+newarr = Arrays.copyOf(arr, arr.length);
+newarr[length-1] = -1; //very less number as -infinity
+Increase_Key(newarr, length-1,key);
+}

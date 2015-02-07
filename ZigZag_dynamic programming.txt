@@ -1,0 +1,41 @@
+public static int zigzag(int[] sequence)
+{
+int[] hi= new int[sequence.length];
+int[] lo = new int[sequence.length];
+int max_hi = 0, max_lo = 0;
+
+for(int i=0;i<sequence.length;i++)
+{
+    hi[i] = lo[i] = 1;
+for(int j=0;j<i;j++)
+{
+if(sequence[i]>sequence[j])
+{
+hi[i] =Math.max(hi[i], lo[j]+1);
+}
+
+if(sequence[i]<sequence[j])
+{
+lo[i] =Math.max(lo[i], hi[j]+1);
+}
+
+}
+
+max_hi = Math.max(max_hi,hi[i]);
+max_lo = Math.max(max_lo,lo[i]);
+
+}
+
+return (Math.max(max_hi, max_lo));
+
+}
+public static void main(String[] args)
+{
+    int[]a = { 1, 17, 5, 10, 13, 15, 10, 5, 16, 8};
+    int k= zigzag(a);
+    System.out.println(k);
+
+}
+
+
+Output : 7

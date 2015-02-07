@@ -1,0 +1,29 @@
+public static void SortBinary(int[] arr)
+{
+int runner_front   = 0;
+int runner_end = arr.length -1;
+while(runner_front<runner_end)
+{
+if(arr[runner_front]==0)
+{
+runner_front++;
+}
+else if(arr[runner_end]==1)
+{
+runner_end--;
+}
+else 
+{arr[runner_end] = 1;
+arr[runner_front] =0; 
+runner_front++;
+runner_end--;
+}
+}
+}
+
+public static void main(String[] args)
+{
+    int[] arr = {0,1,0,0,1,1,1};
+    SortBinary(arr);
+    System.out.println("SortBinary= "+Arrays.toString(arr));
+}

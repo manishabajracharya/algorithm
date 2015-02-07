@@ -1,0 +1,61 @@
+
+Consider the following array {1,2,3,4,5,2,5,4,4}; 
+In the above array, index 4 could be considered as breaking point where summation of 0 to 4 in the array is equal to summation of 5 to end of array. We need to find the breaking point for the given array. I solved this. But follow up was for this array
+
+
+
+public class Interview_Practice 
+{
+public static int findbreakpoint(int[] arr)
+{
+int i=0,j=arr.length-1;
+int sumi=0,sumj=0;
+if(arr==null)
+{return -1;}
+else
+{
+sumi =arr[i];
+sumj= arr[j];
+}
+
+while(i+1<j)
+{
+if(sumi<sumj)
+{
+i++;
+if(arr[i]>=0)
+{
+sumi=sumi+arr[i];
+}
+else
+{
+j--;
+sumj=sumj+arr[j];
+}
+
+}
+else
+{
+j--;
+if(arr[j]>=0)
+{
+sumj=sumj+arr[j];
+}
+else
+{
+i++;
+sumi=sumi+arr[i];
+}
+}
+
+}
+
+return i;
+
+}
+
+public static void main(String[] args){
+    int[] inp ={1,2,3,4,5,2,5,4,4}; // {1,0,-1,-1,1} {1}
+    System.out.println(findbreakpoint(inp));
+}
+}

@@ -1,0 +1,39 @@
+public static void RepeatedString(String str)
+{
+
+HashMap<Character, Integer> hmap = new HashMap<Character, Integer>();
+for(int i=0;i<str.length();i++)
+{
+if(hmap.containsKey(str.charAt(i)))
+{
+hmap.put(str.charAt(i), hmap.get(str.charAt(i))+1);
+}
+else
+{
+hmap.put(str.charAt(i),1);
+}
+
+}
+
+//iterate through hashmap
+Iterator it = hmap.entrySet().iterator();
+while(it.hasNext())
+{
+HashMap.Entry pairs = (HashMap.Entry)it.next();
+if((int)pairs.getValue()==3)
+{
+System.out.println("Key="+pairs.getKey()+" Value="+pairs.getValue());
+}
+
+}
+
+
+}
+
+
+
+public static void main(String[] args)
+{
+    String str = "abb0apl0ebpp0";
+RepeatedString(str);
+}

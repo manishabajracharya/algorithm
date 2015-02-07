@@ -1,0 +1,26 @@
+Find if there is a route between two nodes start and n
+
+public boolean route(Graph g, Node start, Node n)
+Queue q = new LinkedList();
+q.add(start);
+start.visited = true;
+
+while(!q.isEmpty())
+{
+Node rem = q.remove();
+Node adj =  getadjacentNode(rem);
+
+while(adj!=null)
+{
+if(adj==n)
+{
+return true;
+}
+adj.visited = true;
+q.add(adj);
+adj = getadjacentNode(rem);
+}
+
+}
+
+return false;

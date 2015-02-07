@@ -1,0 +1,39 @@
+public static Node inorder(Node n)                                                      
+{
+
+if(n==null)
+{
+return null;
+}
+
+if(n.right!=null)
+{
+return (leftmostnode(n.right));
+
+}
+
+if(n.parent.left==n && n.parent!=null)
+{
+return n.parent;
+}
+
+if(n.parent.right == n && n.parent!=null)
+{
+return inorder(n.parent.parent);
+}
+
+if(n.parent==null)
+{
+return null;
+}
+}
+
+public static Node leftmostnode(Node n)
+{
+if(n.left==null) return null;
+while(n.left!=null)
+{
+n=n.left;
+}
+return n;
+}

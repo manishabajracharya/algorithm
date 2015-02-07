@@ -1,0 +1,69 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package interview_practice;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+/**
+ *
+ * @author Manisha
+ */
+public class Interview_Practice {
+
+    /**
+     * @param args the command line arguments
+     */
+ public static int[] subsequence(int[] seq)
+ {
+ List<int[]>a = new ArrayList<int[]>();
+ 
+// L[j] = MAX(L[j] |j<i, D[j]<D[i])+D[i]
+ int[] L = new int[seq.length];
+ L[0] = seq[0];
+ a.add(0, L);
+     for(int i=0;i<seq.length;i++)
+     {
+     for(int j=0;j<i;j++)
+     {
+         int leni=a.get(i).length;
+         int lenj=a.get(j).length;
+     if((seq[j]<seq[i]) && lenj<leni)
+     {
+     a.remove(i);
+     a.add(i,a.get(j));
+     L[0]=seq[i];
+     a.add(i,L);
+     }
+     
+     }
+     
+     }
+     
+     int max_index=0,max=0;
+     for(int i=0;i<a.size();i++)
+     {
+     if(max<a.get(i).length)
+     {
+     max= a.get(i).length;
+     max_index = i;
+     }
+     }
+     return a.get(max_index);
+ }
+ 
+public static void main(String[] args)
+{
+    int[]a = {16, 3, 5, 19, 10, 14, 12, 0, 15}; //{1, 17, 5, 10, 13, 15, 10, 5, 16, 8};
+    int[] k= subsequence(a);
+    System.out.println(k);
+
+}
+
+}
+   

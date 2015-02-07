@@ -1,0 +1,58 @@
+public static boolean Ransom_note_from_Magazine(List<String> Mag, List<String> Ran)
+{
+
+    HashMap<String, Integer> magazine = new HashMap<String, Integer>();
+
+    Iterator it = Mag.iterator();
+    String str = "";
+    while(it.hasNext())
+    {
+        str = (String)it.next();
+        System.out.println(str);
+        if(magazine.containsKey(str))
+        {
+             magazine.put(str, magazine.get(str)+1);
+        
+        }
+        else
+        {
+        magazine.put(str, 1);
+        
+        }
+
+    }
+
+    Iterator it_ran = Ran.iterator();
+    while(it_ran.hasNext())
+    {
+        str=(String)it_ran.next();
+        if(magazine.containsKey(str))
+        {
+            if(magazine.get(str)>0)
+            {
+                magazine.put(str, magazine.get(str)-1);
+                }
+            else
+            {
+            return false;
+            }
+        }
+        else
+        {
+        return false;
+        }
+
+
+    }
+    return true;
+
+}
+
+public static void main(String[] args)
+{
+    List<String> Mag = new ArrayList<String>();
+    Mag.add("aa"); Mag.add("bc");
+    List<String> Ran = new ArrayList<String>();
+    Ran.add("aa"); Ran.add("aa");
+    System.out.println("Ransom_note_from_Magazine= "+Ransom_note_from_Magazine(Mag, Ran));
+}
