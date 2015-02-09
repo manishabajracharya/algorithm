@@ -3,8 +3,8 @@
 Question:
 
 prog ::= expr
-expr ::= int | ‘(‘ func expr* ‘)’
-func ::= ‘+’ | ‘*’ | …
+expr ::= int | '('func expr* ')'
+func ::= '+' | '*' | …
 
 31      -> 31
 (+1 2) -> 3
