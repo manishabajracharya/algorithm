@@ -38,9 +38,19 @@ public static int qaz(int num)
 
 public static void main(String[] args)
         {   int[] arr = [33,25,26,58,41,59];        
-			create_indexarr(arr);
-			int count = qaz(33);
-            System.out.println(count);
+			int[] index = new int[100];
+			for(int i=0;i<arr.length;i++){
+				index[arr[i]]=i;				
+			}
+			int given =33;
+			int count =0;
+			int ind = index[given];
+			for(int i=ind+1;i<arr.length;i++){
+				if(arr[i]>given){
+					count++;
+				}
+			}
+			 System.out.println(count);
         
         }
 }
