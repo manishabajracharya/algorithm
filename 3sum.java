@@ -1,3 +1,48 @@
+
+
+public static String[] sum(int[] arr){
+	List<String> lst= new ArrayList<String>();
+	Arrays.sort(arr);
+	for(int i=0;i<arr.length-1;i++){
+		int j=i+1;
+		int k=arr.length-1;
+		
+		while(j<k){
+			
+			int sum = arr[i]+arr[j]+arr[k];
+			if(sum==0){
+				lst.add(arr[i]+","+arr[j]+","+arr[k]);	
+				j++;
+			}
+			if (sum <0){
+				j++;
+			}
+			else {
+				k--;
+			}
+			
+		}
+		
+	}
+    String[] retarr = new String[lst.size()];
+    lst.toArray(retarr);
+    return retarr;
+				
+}
+
+public static void main(String[] args){
+	int[] arr={10,-4,-6,3,4,1};
+	String[] str = sum(arr);
+        for(int i=0;i<str.length;i++){
+	System.out.println(str[i]);
+        }
+	
+}
+
+
+
+/*incorrect
+
 public class 3Sum{
  
 public static String[] printTriplets(int[] intArr) {
@@ -41,7 +86,5 @@ int[] arr={10,-4,-6,3,4,1};
 System.out.println(printTriplets(arr));
 }
     
-    
-    
-    
 }
+*/
